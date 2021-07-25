@@ -8,9 +8,9 @@ Asp.Net MVC Relational CRUD Operation with Image.
         * Authentication, Authorization
         * Database First
         * CRUD Operation with Image
-	* CRUD Operation with Ajax
+        * CRUD Operation with Ajax
         * Searching by name
-	* Custom Attribute
+        * Custom Attribute
 ### Tools and Technologies: 
    * EntityFramework
    * Bootstrap
