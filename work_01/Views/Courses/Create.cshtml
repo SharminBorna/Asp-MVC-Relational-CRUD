@@ -1,0 +1,65 @@
+﻿@model work_01.Models.Course
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<div class="row">
+    <div class="col">
+        <div id="msg"></div>
+        @using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "POST", InsertionMode = InsertionMode.Replace, UpdateTargetId = "msg", OnComplete = "clearAll" }))
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal">
+                <h4>Add New Course</h4>
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <div class="form-group">
+                    @Html.LabelFor(model => model.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.Name, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <button class="btn btn-success" type="submit" id="btnCreate">
+                            Create <img src="~/Images/20191210151708445.gif" style="display:none" id="progress" />
+                        </button>
+                        <span id="msg"></span>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+<div>
+    @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-info" })
+</div>
+
+@section scripts{
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script>
+        $("#form0").attr("enctype", "multipart/form-data");
+        function clearAll() {
+            $("#form0").trigger("reset");
+        }
+    </script>
+    <script>
+        $("#btnCreate").click(function (e) {
+            e.preventDefault();
+            $("#progress").attr("style", "width: 20px; margin-left: 10px; margin-bottom: -5px;display:inline-block");
+            $("#btnCreate").attr("disabled", "disabled")
+            setTimeout(function () {
+                $("#form0").submit();
+                $("#progress").attr("style", "width: 20px; margin-left: 10px; margin-bottom: -5px;display:none")
+                $("#btnCreate").removeAttr("disabled")
+            }, 2000);
+        });
+    </script>
+}

@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TraineeDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="CourseId" />
+    </Key>
+    <Property Name="CourseId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" MaxLength="40" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Trainees">
+    <Key>
+      <PropertyRef Name="TraineeId" />
+    </Key>
+    <Property Name="TraineeId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TraineeName" Type="nvarchar" MaxLength="50" Nullable="false" />
+    <Property Name="JoinDate" Type="date" Nullable="false" />
+    <Property Name="CourseId" Type="int" Nullable="false" />
+    <Property Name="PicturePath" Type="nvarchar" MaxLength="150" />
+  </EntityType>
+  <Association Name="FK__Trainees__Course__25869641">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="Trainees" Type="Self.Trainees" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseId" />
+      </Principal>
+      <Dependent Role="Trainees">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TraineeDBModelStoreContainer">
+    <EntitySet Name="Course" EntityType="Self.Course" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="Trainees" EntityType="Self.Trainees" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__Trainees__Course__25869641" Association="Self.FK__Trainees__Course__25869641">
+      <End Role="Course" EntitySet="Course" />
+      <End Role="Trainees" EntitySet="Trainees" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

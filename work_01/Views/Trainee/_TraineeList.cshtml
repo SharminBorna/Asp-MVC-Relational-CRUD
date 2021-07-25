@@ -1,0 +1,33 @@
+﻿@model IEnumerable<work_01.ViewModels.TraineeVM>
+
+<div class="d-flex justify-content-end">
+    @Html.ActionLink("Add New", "Create", new { }, new { @class = "btn btn-success" })
+</div>
+<table class="table table-bordered table-striped table-hover table-sm" style="margin-top:5px;">
+    <thead class="thead-dark">
+        <tr>
+            <th>Trainee Name</th>
+            <th>Join Date</th>
+            <th>Course</th>
+            <th>Picture</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.TraineeName</td>
+                <td>@item.JoinDate.ToShortDateString()</td>
+                <td>@item.cName</td>
+                <td>
+                    <img src="@Url.Content(item.PicturePath)" width="50" />
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.TraineeId }, new { @class = "btn btn-primary" })
+                    @Html.ActionLink("Delete", "Delete", new { id = item.TraineeId }, new { @class = "btn btn-danger" })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

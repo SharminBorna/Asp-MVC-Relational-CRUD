@@ -1,0 +1,39 @@
+﻿@model work_01.ViewModels.LoginVM
+@{
+    ViewBag.Title = "Login";
+}
+
+<h2 class="alert alert-info">Welcome to Login Page...</h2>
+<hr />
+<div class="row">
+    <div class="col">
+        <div>
+            @Html.ValidationSummary(true)
+        </div>
+        @using (Html.BeginForm("Login", "Account", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label class="col-form-label">Username</label>
+                @Html.TextBoxFor(x => x.Username, new { @class = "form-control" })
+                @Html.ValidationMessageFor(x => x.Username, "", new { @class = "text-danger" })
+            </div>
+            <div class="form-group">
+                <label class="col-form-label">Password</label>
+                @Html.TextBoxFor(x => x.Password, new { @class = "form-control", @type = "password" })
+                @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+            </div>
+
+            <div class="form-group mt-4">
+                <button type="submit" class="btn btn-success w-25">Sign In</button>
+                <p class="mt-2">
+                    Not yet a registered user? Please first Register here!!
+                    @Html.ActionLink("Register", "Register")
+                </p>
+            </div>
+        }
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+}

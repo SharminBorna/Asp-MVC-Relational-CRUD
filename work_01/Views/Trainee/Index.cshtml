@@ -1,0 +1,21 @@
+﻿@model IEnumerable<work_01.ViewModels.TraineeVM>
+@{
+    ViewBag.Title = "Index";
+}
+
+<div class="row">
+    <div class="col">
+        <h2>Trainee List</h2>
+        <hr />
+        <div class="col">
+            @using (Html.BeginForm())
+            {
+                <input type="text" name="search" class="form-control col-3 float-left mr-2" placeholder="Trainee Name" />
+                <button type="submit" class="btn btn-info">Search</button>
+            }
+        </div>
+
+        @Html.Partial("_TraineeList", Model)
+
+    </div>
+</div>

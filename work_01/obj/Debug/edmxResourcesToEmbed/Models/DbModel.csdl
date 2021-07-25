@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="TraineeDBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Course">
+    <Key>
+      <PropertyRef Name="CourseId" />
+    </Key>
+    <Property Name="CourseId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" MaxLength="40" FixedLength="false" Unicode="true" Nullable="false" />
+    <NavigationProperty Name="Trainees" Relationship="Self.FK__Trainees__Course__25869641" FromRole="Course" ToRole="Trainees" />
+  </EntityType>
+  <EntityType Name="Trainee">
+    <Key>
+      <PropertyRef Name="TraineeId" />
+    </Key>
+    <Property Name="TraineeId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TraineeName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="JoinDate" Type="DateTime" Nullable="false" Precision="0" />
+    <Property Name="CourseId" Type="Int32" Nullable="false" />
+    <Property Name="PicturePath" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="Course" Relationship="Self.FK__Trainees__Course__25869641" FromRole="Trainees" ToRole="Course" />
+  </EntityType>
+  <Association Name="FK__Trainees__Course__25869641">
+    <End Role="Course" Type="Self.Course" Multiplicity="1" />
+    <End Role="Trainees" Type="Self.Trainee" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Course">
+        <PropertyRef Name="CourseId" />
+      </Principal>
+      <Dependent Role="Trainees">
+        <PropertyRef Name="CourseId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="TraineeDBContext" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Courses" EntityType="Self.Course" />
+    <EntitySet Name="Trainees" EntityType="Self.Trainee" />
+    <AssociationSet Name="FK__Trainees__Course__25869641" Association="Self.FK__Trainees__Course__25869641">
+      <End Role="Course" EntitySet="Courses" />
+      <End Role="Trainees" EntitySet="Trainees" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

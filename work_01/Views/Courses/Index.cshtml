@@ -1,0 +1,41 @@
+﻿@model IEnumerable<work_01.Models.Course>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+<div class="row">
+    <div class="col">
+        <div class="d-flex justify-content-end mb-2">
+            @Html.ActionLink("Create New", "Create", "", new { @class = "btn btn-success" })
+        </div>
+        <table class="table table-bordered table-striped table-hover table-sm">
+            <thead class="thead-dark">
+                <tr>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Name)
+                    </th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Edit", "Edit", new { id = item.CourseId }, new { @class = "btn btn-primary" }) 
+                            @Html.ActionLink("Details", "Details", new { id = item.CourseId }, new { @class = "btn btn-info" }) 
+                            @Html.ActionLink("Delete", "Delete", new { id = item.CourseId }, new { @class = "btn btn-danger" })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+
+        </table>
+    </div>
+</div>

@@ -1,0 +1,53 @@
+﻿@model work_01.Models.Trainee
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h3 class="alert alert-danger">Are you sure you want to delete this Trainee?</h3>
+<div>
+    <dl class="dl-horizontal col-md-12">
+        <dt class="col-md-2 float-left">
+            @Html.DisplayNameFor(model => model.TraineeName)
+        </dt>
+
+        <dd class="col-md-10">
+            @Html.DisplayFor(model => model.TraineeName)
+        </dd>
+
+        <dt class="col-md-2 float-left">
+            @Html.DisplayNameFor(model => model.JoinDate)
+        </dt>
+
+        <dd class="col-md-10">
+            @Html.DisplayFor(model => model.JoinDate)
+        </dd>
+
+        <dt class="col-md-2 float-left">
+            @Html.DisplayNameFor(model => model.PicturePath)
+        </dt>
+
+        <dd class="col-md-10">
+            @Html.DisplayFor(model => model.PicturePath)
+        </dd>
+
+        <dt class="col-md-2 float-left">
+            @Html.DisplayNameFor(model => model.Course.Name)
+        </dt>
+
+        <dd class="col-md-10">
+            @Html.DisplayFor(model => model.Course.Name)
+        </dd>
+
+    </dl>
+    <br />
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color col-md-12 col-md-offset-1">
+            <input type="submit" value="Delete" class="btn btn-danger" /> |
+            @Html.ActionLink("Back to List", "Index", new { }, new { @class = "btn btn-info" })
+        </div>
+    }
+</div>
