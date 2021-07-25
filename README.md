@@ -8,10 +8,9 @@ Asp.Net MVC Relational CRUD Operation with Image.
         * Authentication, Authorization
         * Database First
         * CRUD Operation with Image
-		    * CRUD Operation with Ajax
+	* CRUD Operation with Ajax
         * Searching by name
-		    * Custom Attribute
-
+	* Custom Attribute
 ### Tools and Technologies: 
    * EntityFramework
    * Bootstrap
@@ -21,8 +20,7 @@ Asp.Net MVC Relational CRUD Operation with Image.
    * Microsoft.AspNet.Identity.Owin
    * Microsoft.Owin.Host.SystemWeb
    * Microsoft Visual Studio 2019	
-   * SQL Server Management Studio 2018
-	 
+   * SQL Server Management Studio 2018	 
 ### Instruction:
   * Run Project
   * Register a new user
